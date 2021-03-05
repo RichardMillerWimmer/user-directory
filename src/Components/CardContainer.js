@@ -30,7 +30,6 @@ class CardContainer extends Component {
         this.diplayProfile(this.state.pageNumber)
     }
 
-
     next() {
         if (this.state.pageNumber >= 1 && this.state.pageNumber <= 25) {
             this.setState({ pageNumber: this.state.pageNumber + 1 })

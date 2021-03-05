@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import { Component } from 'react';
+import data from './data'
+import Header from './Components/Header'
+import CardContainer from './Components/CardContainer'
+import BottomControls from './Components/BottomControls'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: data
+    }
+  }
+
+
+
+
+  render() {
+    // console.log(this.state.data)
+    return (
+      <div className="App" >
+        <Header />
+        <CardContainer />
+        {/* <BottomControls /> */}
+      </div>
+    )
+  };
 }
 
 export default App;

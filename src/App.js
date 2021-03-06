@@ -26,7 +26,6 @@ class App extends Component {
       <div className="App" >
         <Header />
         <CardContainer />
-        {/* <BottomControls /> */}
       </div>
     )
   };

@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import styles from './App.css';
 import data from './data'
 import Header from './Components/Header'
 import CardContainer from './Components/CardContainer'
@@ -25,7 +26,7 @@ class App extends Component {
       <div className="App" >
         <Header />
         <CardContainer />
-        {/* <BottomControls /> */}
+        <BottomControls />
       </div>
     )
   };

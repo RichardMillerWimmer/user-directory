@@ -1,38 +1,84 @@
-.App {
-  text-align: center;
+body {
+  box-sizing: border-box;
+  margin: 0;
+  background-color: rgb(34, 34, 34);
+  color: rgb(34, 34, 34);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px;
+  background-color: rgb(36, 166, 213);
+  color:rgb(34, 34, 34);
+  width: 100%;
+  height: 10vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.home {
+  margin: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.cardContainer {
+  background: rgb(235, 235, 235);
+  color: rgb(34, 34, 34);
+  margin: auto;
+  height: auto; 
+  width: 80vw;
+  padding: 30px;
+  margin-top: 60px;
+}
+
+.indexCount {
+  text-align: right;
+  margin-top: -18px;
+  margin-right: -18px;
+}
+
+.name {
+  text-decoration: underline solid rgb(36, 166, 213);
+}
+
+.buttonBox {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  width: 85vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8px;
 }
 
-.App-link {
-  color: #61dafb;
+.scrollButton {
+  background: none;
+  color: rgb(34, 34, 34);
+  /* color: rgb(235, 235, 235); */
+  border: none;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 5;
+}
+.previousButton {
+  text-align: left;
+}
+.nextButton {
+  text-align: right;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.blueButton {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: none;
+  background: rgb(36, 166, 213);
+  border-radius: 15px;
+  padding: 8px;
+  color: rgb(235, 235, 235);
+  font-weight: 700;
+  flex: 1;
+  
 }
+
+
+
+

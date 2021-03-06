@@ -12,38 +12,42 @@ class CardContainer extends Component {
         }
     }
 
-    handleChange(value) {
-        this.setState({ pageNumber: +value })
-        console.log(this.state.pageNumber)
-    }
+    // handleChange(value) {
+    //     this.setState({ pageNumber: +value })
+    //     console.log(this.state.pageNumber)
+    // }
 
     componentDidMount() {
         this.setState({ selectedProfile: data[0] })
     }
     onClickNext() {
         this.next()
-        this.diplayProfile(this.state.pageNumber)
+        // this.diplayProfile(this.state.pageNumber)
     }
 
     onClickPrevious() {
         this.previous()
-        this.diplayProfile(this.state.pageNumber)
+        // this.diplayProfile(this.state.pageNumber)
     }
 
     next() {
+        // this.diplayProfile(this.state.pageNumber)
         if (this.state.pageNumber >= 1 && this.state.pageNumber <= 25) {
             this.setState({ pageNumber: this.state.pageNumber + 1 })
         } else {
             this.setState({ pageNumber: 1 })
         }
+        console.log(this.state.pageNumber)
     }
 
     previous() {
+        // this.diplayProfile(this.state.pageNumber)
         if (this.state.pageNumber >= 1 && this.state.pageNumber <= 25) {
             this.setState({ pageNumber: this.state.pageNumber - 1 })
         } else {
             this.setState({ pageNumber: 25 })
         }
+        console.log(this.state.pageNumber)
     }
 
     diplayProfile(pageNumber) {
@@ -55,15 +59,15 @@ class CardContainer extends Component {
         // console.log(this.state.selectedProfile)
     }
 
-    //   Change
 
     render() {
         // console.log(this.state.data)
         return (
-            < section >
+            < section className="cardContainer" >
                 <div>
-                    <h2>{this.state.selectedProfile.id} / 25</h2>
+                    <h2 className='indexCount'>{this.state.selectedProfile.id} / 25</h2>
                     {/* <h2>{this.state.selectedProfile.name[0]} {this.state.selectedProfile.name[1]}</h2> */}
+                    <h2 className='name'>Name LastName</h2>
                     <h4>From: {this.state.selectedProfile.city}, {this.state.selectedProfile.country} </h4>
                     <h4>Job Title: {this.state.selectedProfile.title} </h4>
                     <h4>Employer: {this.state.selectedProfile.employer} </h4>
@@ -71,12 +75,20 @@ class CardContainer extends Component {
                 <div>
                     <h4> Favorite Movies:</h4>
                     <ol>
-                        <li>_</li>
-                        <li>_</li>
-                        <li>_</li>
+                        <li>___</li>
+                        <li>___</li>
+                        <li>___</li>
+                        {/* <li>{this.state.selectedProfile.favoriteMovies[0]}</li>
+                        <li>{this.state.selectedProfile.favoriteMovies[1]}</li>
+                        <li>{this.state.selectedProfile.favoriteMovies[2]}</li> */}
                     </ol>
-                    <button onClick={() => this.onClickPrevious()}>Previous</button>
-                    <button onClick={() => this.onClickNext()}>Next</button>
+                    <div className='buttonBox'>
+                        <button className='previousButton scrollButton' onClick={() => this.onClickPrevious()}>&#60; Previous</button>
+                        <button className='blueButton'>Edit</button>
+                        <button className='blueButton'>Delete</button>
+                        <button className='blueButton'>New</button>
+                        <button className='nextButton scrollButton' onClick={() => this.onClickNext()}>Next &#62;</button>
+                    </div>
                 </div >
             </section >
         )

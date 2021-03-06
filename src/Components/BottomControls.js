@@ -12,11 +12,13 @@ class BottomControls extends Component {
     render() {
         return (
             <nav>
-                <button>Previous</button>
-                <button>Edit</button>
-                <button>Delete</button>
-                <button>New</button>
-                <button>Next</button>
+                <div className='buttonBox'>
+                    <button className='previousButton scrollButton' onClick={() => this.onClickPrevious()}>&#60; Previous</button>
+                    <button className='blueButton'>Edit</button>
+                    <button className='blueButton'>Delete</button>
+                    <button className='blueButton'>New</button>
+                    <button className='nextButton scrollButton' onClick={() => this.onClickNext()}>Next &#62;</button>
+                </div>
             </nav>
         )
     }

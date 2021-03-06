@@ -1,96 +1,90 @@
 import React, { Component } from 'react';
 import data from '../data'
-
+import BottomControls from './BottomControls'
 
 class CardContainer extends Component {
     constructor() {
         super();
         this.state = {
             data: data,
-            selectedProfile: {},
-            pageNumber: 1
+            // selectedProfile: data[0],
+            pageNumber: 0
         }
+        this.previous = this.previous.bind(this)
+        this.next = this.next.bind(this)
     }
 
-    // handleChange(value) {
-    //     this.setState({ pageNumber: +value })
-    //     console.log(this.state.pageNumber)
-    // }
 
-    componentDidMount() {
-        this.setState({ selectedProfile: data[0] })
-    }
-    onClickNext() {
-        this.next()
-        // this.diplayProfile(this.state.pageNumber)
-    }
-
-    onClickPrevious() {
-        this.previous()
-        // this.diplayProfile(this.state.pageNumber)
-    }
 
     next() {
+        let newPageNumber = this.state.pageNumber;
+
+        // console.log(this.state.pageNumber)
         // this.diplayProfile(this.state.pageNumber)
-        if (this.state.pageNumber >= 1 && this.state.pageNumber <= 25) {
-            this.setState({ pageNumber: this.state.pageNumber + 1 })
+
+        if (newPageNumber >= 0 && newPageNumber < (this.state.data.length - 1)) {
+            newPageNumber++
         } else {
-            this.setState({ pageNumber: 1 })
+            newPageNumber = 0
         }
+        this.setState({ pageNumber: newPageNumber })
         console.log(this.state.pageNumber)
     }
 
     previous() {
+        let newPageNumber = this.state.pageNumber;
         // this.diplayProfile(this.state.pageNumber)
-        if (this.state.pageNumber >= 1 && this.state.pageNumber <= 25) {
-            this.setState({ pageNumber: this.state.pageNumber - 1 })
+        if (newPageNumber > 0 && newPageNumber <= (this.state.data.length - 1)) {
+            newPageNumber--
         } else {
-            this.setState({ pageNumber: 25 })
+            newPageNumber = this.state.data.length - 1
         }
+        this.setState({ pageNumber: newPageNumber })
         console.log(this.state.pageNumber)
     }
 
-    diplayProfile(pageNumber) {
-        for (let i = 0; i < data.length; i++) {
-            if (data[i].id === pageNumber) {
-                this.setState({ selectedProfile: data[i] })
-            }
-        }
-        // console.log(this.state.selectedProfile)
-    }
+    // diplayProfile(pageNumber) {
+    //     for (let i = 0; i < data.length; i++) {
+    //         if (data[i].id === pageNumber) {
+    //             this.setState({ selectedProfile: data[i] })
+    //         }
+    //     }
+    //     // console.log(this.state.selectedProfile)
+    // }
 
 
     render() {
-        // console.log(this.state.data)
+        const profile = data[this.state.pageNumber]
+        // console.log(this.state.pageNumber)
         return (
-            < section className="cardContainer" >
-                <div>
-                    <h2 className='indexCount'>{this.state.selectedProfile.id} / 25</h2>
-                    {/* <h2>{this.state.selectedProfile.name[0]} {this.state.selectedProfile.name[1]}</h2> */}
-                    <h2 className='name'>Name LastName</h2>
-                    <h4>From: {this.state.selectedProfile.city}, {this.state.selectedProfile.country} </h4>
-                    <h4>Job Title: {this.state.selectedProfile.title} </h4>
-                    <h4>Employer: {this.state.selectedProfile.employer} </h4>
-                </div>
-                <div>
-                    <h4> Favorite Movies:</h4>
-                    <ol>
-                        <li>___</li>
-                        <li>___</li>
-                        <li>___</li>
-                        {/* <li>{this.state.selectedProfile.favoriteMovies[0]}</li>
-                        <li>{this.state.selectedProfile.favoriteMovies[1]}</li>
-                        <li>{this.state.selectedProfile.favoriteMovies[2]}</li> */}
-                    </ol>
-                    <div className='buttonBox'>
-                        <button className='previousButton scrollButton' onClick={() => this.onClickPrevious()}>&#60; Previous</button>
+            <>
+                < section className="cardContainer" >
+                    <div>
+                        <h2 className='indexCount'>{profile.id} / 25</h2>
+                        <h2>{profile.name.first} {profile.name.last}</h2>
+                        {/* <h2 className='name'>Name LastName</h2> */}
+                        <h4>From: {profile.city}, {profile.country} </h4>
+                        <h4>Job Title: {profile.title} </h4>
+                        <h4>Employer: {profile.employer} </h4>
+                    </div>
+                    <div>
+                        <h4> Favorite Movies:</h4>
+                        <ol>
+                            <li>{profile.favoriteMovies[0]}</li>
+                            <li>{profile.favoriteMovies[1]}</li>
+                            <li>{profile.favoriteMovies[2]}</li>
+                        </ol>
+                        {/* <div className='buttonBox'>
+                        <button className='previousButton scrollButton' onClick={this.previous}>&#60; Previous</button>
                         <button className='blueButton'>Edit</button>
                         <button className='blueButton'>Delete</button>
                         <button className='blueButton'>New</button>
-                        <button className='nextButton scrollButton' onClick={() => this.onClickNext()}>Next &#62;</button>
-                    </div>
-                </div >
-            </section >
+                        <button className='nextButton scrollButton' onClick={this.next}>Next &#62;</button>
+                    </div> */}
+                    </div >
+                </section >
+                < BottomControls previous={this.previous} next={this.next} />
+            </>
         )
     }
 }

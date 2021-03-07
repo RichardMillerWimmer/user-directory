@@ -20,7 +20,6 @@ class CardContainer extends Component {
         let newPageNumber = this.state.pageNumber;
 
         // console.log(this.state.pageNumber)
-        // this.diplayProfile(this.state.pageNumber)
 
         if (newPageNumber >= 0 && newPageNumber < (this.state.data.length - 1)) {
             newPageNumber++
@@ -28,19 +27,22 @@ class CardContainer extends Component {
             newPageNumber = 0
         }
         this.setState({ pageNumber: newPageNumber })
-        console.log(this.state.pageNumber)
+        // console.log(this.state.pageNumber)
     }
 
     previous() {
         let newPageNumber = this.state.pageNumber;
-        // this.diplayProfile(this.state.pageNumber)
+
+        // console.log(this.state.pageNumber)
+
+
         if (newPageNumber > 0 && newPageNumber <= (this.state.data.length - 1)) {
             newPageNumber--
         } else {
             newPageNumber = this.state.data.length - 1
         }
         this.setState({ pageNumber: newPageNumber })
-        console.log(this.state.pageNumber)
+        // console.log(this.state.pageNumber)
     }
 
     // diplayProfile(pageNumber) {
@@ -74,13 +76,6 @@ class CardContainer extends Component {
                             <li>{profile.favoriteMovies[1]}</li>
                             <li>{profile.favoriteMovies[2]}</li>
                         </ol>
-                        {/* <div className='buttonBox'>
-                        <button className='previousButton scrollButton' onClick={this.previous}>&#60; Previous</button>
-                        <button className='blueButton'>Edit</button>
-                        <button className='blueButton'>Delete</button>
-                        <button className='blueButton'>New</button>
-                        <button className='nextButton scrollButton' onClick={this.next}>Next &#62;</button>
-                    </div> */}
                     </div >
                 </section >
                 < BottomControls previous={this.previous} next={this.next} />
